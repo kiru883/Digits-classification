@@ -6,9 +6,10 @@ function saveImg() {
 	  url: "/hook",
 	  data:{
 		imageBase64: dataURL,
+		test: "abc"
 		}
 	}).done(function(response) {
 	  console.log(response)
 	});
-	
+	console.log("ajax");
 }

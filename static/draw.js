@@ -3,6 +3,7 @@ var drawing = false;
 var context;
 var offset_left = 0;
 var offset_top = 0;
+var trigger = false
 
 function start_canvas () {
     var canvas = document.getElementById ("the_stage");
@@ -55,11 +56,16 @@ function
 mousemove(event) {
     if (!drawing) 
         return;
+
+    if(trigger){
+        window.clearTimeout(obj_timer);
+    }
+    obj_timer = window.setTimeout(saveImg(), 2000);
+
     var location = getPosition(event);
     context.lineTo(location.x,location.y);
     context.stroke();
 }
-
 
 
 function
@@ -77,6 +83,8 @@ function draw() {
 }
 
 function clearCanvas() {
+    //console.log("sdfddfgsf");
+    saveImg();
     context.clearRect (0, 0, 400, 360);
     draw();
 }
