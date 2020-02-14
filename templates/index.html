@@ -10,9 +10,12 @@
         <link href="static/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="static/css/simple-sidebar.css" rel="stylesheet">
+        <link href="static/css/draw.css" rel="stylesheet">
     </head>
+
     <body>
         <div class="d-flex" id="wrapper">
+
             <!-- Sidebar -->
             <div class="bg-light border-right" id="sidebar-wrapper" style="width: 120px;">
                 <div class="sidebar-heading">Start Bootstrap </div>
@@ -33,6 +36,7 @@
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
             <div id="page-content-wrapper">
+
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,16 +61,25 @@
                     </div>
                 </nav>
                 <div style="height: 1000px; text-align: center;">
+
                     <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px;">
-                        <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png'); text-align: center; left: 20px; top: 50px;">
+                        <canvas id="sketchpad" height="360px" width="400px" style="top: 65px; left: 790px; position: relative; z-index: 10; background:white;">
+                        </canvas>
+                        <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png');
+                        text-align: center; left: 20px; top: 50px;">
+
                             <img src="static/images/preprocessed_image.png" style="width: 100px; position: absolute; right: 485px; top: 95px; height: 90px;"/>
                             <img src="static/images/bounded_digit.png" style="width: 120px; position: absolute; top: 80px; right: 305px; height: 116px;"/>
                             <label style="top: 5px; position: absolute; font-size: 25px; line-height: 1; left: 220px;">Image preprocessing</label>
                             <img src="static/images/input_image.png" style="width: 180px; height: 170px; position: absolute; top: 55px; right: 65px;"/>
+
                         </div>
+
                         <div style="width: 440px; height: 450px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 770px; top: -210px;">
-                            <canvas id='the_stage' style="position: relative; background: white; top:25px" width="400" height="360"></canvas>
-                            <button type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearCanvas()">Clear</button>
+
+                            <button type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearCanvas(canvas, ctx)">Clear</button>
+
+
                         </div>
                         <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 770px; bottom: 100px;">
                             <label style="position: absolute; top: 70px; left: 180px;">Label</label>
@@ -347,3 +360,4 @@
   </script>
     </body>
 </html>
+<!-- <div style="position: relative"> <canvas id='the_stage' style="position: relative; background: white; top:25px; align: center" width="400" height="360"></canvas> </div>> -->
