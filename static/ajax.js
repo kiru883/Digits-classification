@@ -1,5 +1,5 @@
 function saveImg() {
-	var canvas = document.getElementById("the_stage");
+	var canvas = document.getElementById("sketchpad");
 	var dataURL = canvas.toDataURL('image/jpg');
 	$.ajax({
 	  type: "POST",
@@ -8,8 +8,6 @@ function saveImg() {
 		imageBase64: dataURL,
 		test: "abc"
 		}
-	}).done(function(response) {
-	  console.log(response)
-	});
-	console.log("ajax");
+	})
+
 }

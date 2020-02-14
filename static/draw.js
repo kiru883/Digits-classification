@@ -1,6 +1,8 @@
-// Variables for referencing the canvas and 2dcanvas contextvar font_size = 16;
+// Variables for referencing the canvas and 2dcanvas context
 var font_size = 16;
 var canvas,ctx;
+var trigger = false;
+var timer;
 
 // Variables to keep track of the mouse position and left-button status
 var mouseX,mouseY,mouseDown=0;
@@ -21,6 +23,13 @@ function drawLine(ctx,x,y,size) {
         lastX=x;
     lastY=y;
     }
+
+    //need for ajax
+    if (trigger){
+        window.clearTimeout(timer);
+    }
+    trigger = true;
+    timer = window.setTimeout(saveImg, 2200);
 
     // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
     r=0; g=0; b=0; a=255;
@@ -114,13 +123,13 @@ function sketchpad_touchEnd() {
     // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
     lastX=-1;
     lastY=-1;
+
 }
 
 // Draw something and prevent the default scrolling when touch movement is detected
 function sketchpad_touchMove(e) {
     // Update the touch co-ordinates
     getTouchPos(e);
-
     // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
     drawLine(ctx,touchX,touchY,font_size);
 

@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+import base64
+from pipeline import pipeline
 
 app = Flask(__name__)
 
@@ -9,8 +11,12 @@ def index():
 @app.route("/hook", methods=["POST", "GET"])
 def get_image():
     if request.method == "POST":
-        test = request.values['test']
-        print(test)
+        image_base64 = request.values['imageBase64']
+        image = base64.decodebytes(image_base64.split(',')[1].encode('utf-8'))
+        with open('tmp/input.jpg') as f:
+            f.write(image)
+        #pipeline image preprocessing#
+
     return ""
 
 
