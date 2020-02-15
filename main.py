@@ -1,21 +1,29 @@
-from flask import Flask, render_template, request
-import base64
-from pipeline import pipeline
+from flask import Flask, render_template, request, url_for
+from pipeline.pipeline import Model
+
 
 app = Flask(__name__)
+model = Model(image_noise_coef=15)
+
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', test='input_image.png')
+
 
 @app.route("/hook", methods=["POST", "GET"])
 def get_image():
     if request.method == "POST":
+        # get post req.
         image_base64 = request.values['imageBase64']
-        image = base64.decodebytes(image_base64.split(',')[1].encode('utf-8'))
-        with open('tmp/input.jpg') as f:
-            f.write(image)
-        #pipeline image preprocessing#
+        image_base64 = image_base64.split(',')[1].encode('utf-8')
+
+        # part 1, image preprocessing
+        model.image_preprocessing(image_base64)
+        # rendering, update preprocessing images
+        render_template('index.html', test='static(input_image_prepared.png)')
+
+
 
     return ""
 

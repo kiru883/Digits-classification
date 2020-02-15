@@ -1,5 +1,5 @@
 // Variables for referencing the canvas and 2dcanvas context
-var font_size = 16;
+var font_size = 26;
 var canvas,ctx;
 var trigger = false;
 var timer;
