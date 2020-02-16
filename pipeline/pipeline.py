@@ -4,6 +4,7 @@ from skimage.transform import resize
 import numpy
 from io import BytesIO
 import base64
+import matplotlib.pyplot as plt
 
 
 
@@ -46,15 +47,26 @@ class Model:
         self.mnist_image[14 - (half_y):14 + (heightlen - half_y), 14 - (half_x):14 + (widthlen - half_x)] = number
 
         # prepare images from site put in preprocessed part
-        self.__site_images_prepare(image, "input_image")
-        self.__site_images_prepare(image.crop(bbox), "bounded_digit")
-        self.__site_images_prepare(self.mnist_image, "preprocessed_image")
+        image64 = self.__site_images_prepare(image, "input_image")
+        bounded64 = self.__site_images_prepare(image.crop(bbox), "bounded_digit")
+        mnist64 = self.__site_images_prepare(self.mnist_image, "preprocessed_image")
+
+        del image, number, half_x, half_y, widthlen, heightlen
+        return {
+            "input_image": image64,
+            "bounded_digit": bounded64,
+            "mnist_image": mnist64
+        }
 
     # prepare image for site
     def __site_images_prepare(self, image, img_type):
         # convert in image if image is array
         if type(image) == numpy.ndarray:
-            image = Image.fromarray(image)
+            buf = BytesIO()
+            plt.imshow(image, cmap='Greys', interpolation='nearest')
+            plt.axis('off')
+            plt.savefig(buf, bbox_inches='tight')
+            image = Image.open(buf)
 
         # get images background and image sizes
         width_b, height_b = Image.open("static/images/" + img_type + ".png").size
@@ -76,11 +88,14 @@ class Model:
         site_image = Image.new(mode='RGBA', size=(width_b, height_b), color=255)
         site_image.paste(image, (width_b//2 - width_i//2, height_b//2 - height_i//2))
 
-        # save img in tmp folder
-        site_image.save("tmp/" + img_type + "_prepared.png")
+        # write image in buffer(base64)
+        buffer = BytesIO()
+        site_image.save(buffer, format="PNG")
 
-        del image, site_image, max_b, min_b, width_i, width_b, height_i, height_b
+        img = base64.b64encode(buffer.getvalue()).decode('ascii')
 
+        del image, site_image, max_b, min_b, width_i, width_b, height_i, height_b, buffer
+        return img
 
 
 
