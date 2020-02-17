@@ -26,10 +26,14 @@ def get_image():
         # part 1, image preprocessing
         visualisation_images = model.image_preprocessing(image_base64)
 
+        # part 2, predict
+        model.predict()
+
     return jsonify({
       "images": visualisation_images
     })
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
 

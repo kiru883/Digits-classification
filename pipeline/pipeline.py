@@ -1,18 +1,26 @@
 from PIL import Image
 from sklearn.preprocessing import MinMaxScaler
 from skimage.transform import resize
-import numpy
 from io import BytesIO
+from joblib import load
+from os import path, listdir
+import numpy
 import base64
 import matplotlib.pyplot as plt
+from FNN import FNN
 
+MODEL_FILE_EXTENSION = ".joblib"
+MODELS_PATH = "pipeline/models"
 
 
 class Model:
     def __init__(self, image_noise_coef):
-        self.mnist_image = None;
-        self.predicts = None;
-        self.image_noise_coef = image_noise_coef;
+        # load models is model path with model_file_extension
+        self.__load_models()
+
+        self.mnist_image = None
+        self.predicts = None
+        self.image_noise_coef = image_noise_coef
 
     # image preprocessor, return 3 image for site and 'mnist-array' image
     def image_preprocessing(self, imgB64):
@@ -45,6 +53,7 @@ class Model:
         half_x = widthlen // 2
         self.mnist_image = numpy.zeros((28, 28))
         self.mnist_image[14 - (half_y):14 + (heightlen - half_y), 14 - (half_x):14 + (widthlen - half_x)] = number
+        self.mnist_image = MinMaxScaler().fit_transform(self.mnist_image)
 
         # prepare images from site put in preprocessed part
         image64 = self.__site_images_prepare(image, "input_image")
@@ -57,6 +66,15 @@ class Model:
             "bounded_digit": bounded64,
             "mnist_image": mnist64
         }
+
+    # predicts stage, return predicts for each model
+    def predict(self):
+        predicts = dict()
+        for model_name in self.__models.keys():
+            img = self.mnist_image.flatten().reshape(1, -1)
+            predicts[model_name] = self.__models[model_name].predict_proba(img)
+        print(numpy.array(predicts['FNN']).argmax())
+
 
     # prepare image for site
     def __site_images_prepare(self, image, img_type):
@@ -96,6 +114,14 @@ class Model:
 
         del image, site_image, max_b, min_b, width_i, width_b, height_i, height_b, buffer
         return img
+
+    # load models from models folder
+    def __load_models(self):
+        self.__models = dict()
+        for mod_path in listdir(MODELS_PATH):
+            fname, fextansion = path.splitext(mod_path)
+            if fextansion == MODEL_FILE_EXTENSION:
+                self.__models[fname] = load(MODELS_PATH + "/" + mod_path)
 
 
 
