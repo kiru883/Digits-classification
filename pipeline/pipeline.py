@@ -8,15 +8,21 @@ import numpy
 import base64
 import matplotlib.pyplot as plt
 from FNN import FNN
+import keras
+import tensorflow as tf
 
+global GRAPH
+GRAPH = tf.get_default_graph()
 MODEL_FILE_EXTENSION = ".joblib"
 MODELS_PATH = "pipeline/models"
+
 
 
 class Model:
     def __init__(self, image_noise_coef):
         # load models is model path with model_file_extension
-        self.__load_models()
+        self.__dnn_model = load("pipeline/models/DNN.joblib")
+        self.__cnn_model = load("pipeline/models/CNN.joblib")
 
         self.mnist_image = None
         self.predicts = None
@@ -69,12 +75,16 @@ class Model:
 
     # predicts stage, return predicts for each model
     def predict(self):
-        predicts = dict()
-        for model_name in self.__models.keys():
-            img = self.mnist_image.flatten().reshape(1, -1)
-            predicts[model_name] = self.__models[model_name].predict_proba(img)
-        print(numpy.array(predicts['FNN']).argmax())
+        # need for keras model, cnn predict
+        with GRAPH.as_default():
+            cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))
+        # dnn predict
+            dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))
 
+        return {
+            'DNN': dnn_pred,
+            'CNN': cnn_pred
+        }
 
     # prepare image for site
     def __site_images_prepare(self, image, img_type):
@@ -115,13 +125,6 @@ class Model:
         del image, site_image, max_b, min_b, width_i, width_b, height_i, height_b, buffer
         return img
 
-    # load models from models folder
-    def __load_models(self):
-        self.__models = dict()
-        for mod_path in listdir(MODELS_PATH):
-            fname, fextansion = path.splitext(mod_path)
-            if fextansion == MODEL_FILE_EXTENSION:
-                self.__models[fname] = load(MODELS_PATH + "/" + mod_path)
 
 
 

@@ -27,7 +27,7 @@ def get_image():
         visualisation_images = model.image_preprocessing(image_base64)
 
         # part 2, predict
-        model.predict()
+        print(model.predict())
 
     return jsonify({
       "images": visualisation_images
