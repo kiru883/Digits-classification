@@ -1,28 +1,33 @@
-from PIL import Image
+from PIL import Image, ImageChops
 from sklearn.preprocessing import MinMaxScaler
 from skimage.transform import resize
 from io import BytesIO
 from joblib import load
-from os import path, listdir
 import numpy
 import base64
 import matplotlib.pyplot as plt
 from FNN import FNN
 import keras
 import tensorflow as tf
+import lightgbm
+
 
 global GRAPH
 GRAPH = tf.get_default_graph()
 MODEL_FILE_EXTENSION = ".joblib"
 MODELS_PATH = "pipeline/models"
-
-
+img_sizes = {
+    "input_img": (180, 170),
+    "bounded_img": (120, 116),
+    "mnist_img": (100, 90)
+}
 
 class Model:
     def __init__(self, image_noise_coef):
         # load models is model path with model_file_extension
         self.__dnn_model = load("pipeline/models/DNN.joblib")
         self.__cnn_model = load("pipeline/models/CNN.joblib")
+        self.__gb_model = load("pipeline/models/GB.joblib")
 
         self.mnist_image = None
         self.predicts = None
@@ -62,9 +67,9 @@ class Model:
         self.mnist_image = MinMaxScaler().fit_transform(self.mnist_image)
 
         # prepare images from site put in preprocessed part
-        image64 = self.__site_images_prepare(image, "input_image")
-        bounded64 = self.__site_images_prepare(image.crop(bbox), "bounded_digit")
-        mnist64 = self.__site_images_prepare(self.mnist_image, "preprocessed_image")
+        image64 = self.__site_images_prepare(image, "input_img")
+        bounded64 = self.__site_images_prepare(image.crop(bbox), "bounded_img")
+        mnist64 = self.__site_images_prepare(self.mnist_image, "mnist_img")
 
         del image, number, half_x, half_y, widthlen, heightlen
         return {
@@ -77,13 +82,21 @@ class Model:
     def predict(self):
         # need for keras model, cnn predict
         with GRAPH.as_default():
-            cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))
+            cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))[0]
         # dnn predict
-            dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))
+            dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0][0]
+        # gradient boosting predict
+            gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
+
+        # around arrays
+        cnn_pred = numpy.around(cnn_pred, 3)
+        dnn_pred = numpy.around(dnn_pred, 3)
+        gb_pred = numpy.around(gb_pred, 3)
 
         return {
-            'DNN': dnn_pred,
-            'CNN': cnn_pred
+            'DNN': dnn_pred.tolist(),
+            'CNN': cnn_pred.tolist(),
+            'GB': gb_pred.tolist()
         }
 
     # prepare image for site
@@ -97,7 +110,7 @@ class Model:
             image = Image.open(buf)
 
         # get images background and image sizes
-        width_b, height_b = Image.open("static/images/" + img_type + ".png").size
+        width_b, height_b = img_sizes[img_type]
         width_i, height_i = image.size
 
         # find max and min background sizes

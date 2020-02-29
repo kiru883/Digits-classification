@@ -12,13 +12,11 @@
         <link href="static/css/simple-sidebar.css" rel="stylesheet">
         <link href="static/css/draw.css" rel="stylesheet">
     </head>
-
     <body>
         <div class="d-flex" id="wrapper">
-
             <!-- Sidebar -->
             <div class="bg-light border-right" id="sidebar-wrapper" style="width: 120px;">
-                <div class="sidebar-heading">Start Bootstrap </div>
+                <div class="sidebar-heading">Theory</div>
                 <div class="list-group list-group-flush" style="width: 119px;">
                     <a href="#" class="list-group-item list-group-item-action bg-light" style="white-space: pre; font-size: 15px;">Preprocessing</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light">Predict</a>
@@ -36,8 +34,7 @@
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
             <div id="page-content-wrapper">
-
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" style="margin-bottom: 10px;">
                     <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -61,31 +58,26 @@
                     </div>
                 </nav>
                 <div style="height: 1000px; text-align: center;">
-
-                    <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px;">
-                        <canvas id="sketchpad" height="360px" width="400px" style="top: 65px; left: 790px; position: relative; z-index: 10; background:white;">
-                        </canvas>
-                        <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png');
-                        text-align: center; left: 20px; top: 50px;">
-
-                            <img id="mnist" src="static/images/preprocessed_image.png" style="width: 100px; position: absolute; right: 485px; top: 95px; height: 90px; background: white;"/>
-                            <img id='bounded' src="static/images/bounded_digit.png" style="width: 120px; position: absolute; top: 80px; right: 305px; height: 116px; background: white;"/>
+                    <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa;">
+                        <canvas id="sketchpad" height="360px" width="400px" style="top: 60px; left: 815px; position: relative; z-index: 10; background: white;">
+</canvas>
+                        <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png'); text-align: center; left: 45px; top: 50px;">
+                            <img id="mnist" src="static/images/cap_background.png" style="width: 100px; position: absolute; right: 485px; top: 95px; height: 90px; background: white;">
+                            <label style="position: absolute; right: 505px; bottom: 50px; width: 80px; background: white; font-size: 12px;">Output img.</label>
+                            <img id="bounded" src="static/images/cap_background.png" style="width: 120px; position: absolute; top: 80px; right: 305px; height: 116px; background: white;">
+                            <label style="right: 325px; position: absolute; bottom: 35px; background: white; width: 100px; font-size: 15px;">Bounded digit</label>
                             <label style="top: 5px; position: absolute; font-size: 25px; line-height: 1; left: 220px;">Image preprocessing</label>
-                            <img id='input' src="static/images/input_image.png" style="width: 180px; height: 170px; position: absolute; top: 55px; right: 65px; background: white;"/>
-
+                            <img id="input" src="static/images/cap_background.png" style="width: 180px; height: 170px; position: absolute; top: 55px; right: 65px; background: white;">
+                            <label style="position: absolute; bottom: 5px; right: 100px; background: white; width: 145px;">Input img.</label>
                         </div>
-
-                        <div style="width: 440px; height: 450px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 770px; top: -210px;">
-
-                            <button type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearCanvas(canvas, ctx)">Clear</button>
-
-
+                        <div style="width: 440px; height: 450px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; top: -210px;">
+                            <button type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearFields()">Clear</button>
                         </div>
-                        <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 770px; bottom: 100px;">
+                        <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; bottom: 100px;">
                             <label style="position: absolute; top: 70px; left: 180px;">Label</label>
                             <label style="position: absolute; top: 20px; font-size: 20px; left: 200px;">Result:</label>
                         </div>
-                        <div style="width: 650px; height: 555px; position: relative; left: 20px; background-image: url('static/images/background.png'); border-radius: 20px; bottom: 550px;">
+                        <div style="width: 650px; height: 575px; position: relative; left: 45px; background-image: url('static/images/background.png'); border-radius: 20px; bottom: 550px;">
                             <label style="font-size: 25px; line-height: 1; position: absolute; top: 5px; left: 275px;">Predicts</label>
                             <table class="table d-table" style="top: 40px; position: absolute;"> 
                                 <thead> 
@@ -99,240 +91,240 @@
                                 <tbody> 
                                     <tr style="white-space: normal; line-height: 1.5;"> 
                                         <th scope="row" style="width: 86px;">0</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN0" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" value="23%" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN0" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB0" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>
                                     </tr>                                     
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">1</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN1" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN1" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB1" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>                                     
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">2</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN2" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN2" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB2" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">3</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN3" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN3" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB3" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">4</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN4" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN4" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB4" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">5</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN5" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN5" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB5" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">6</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN6" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN6" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB6" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">7</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN7" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN7" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB7" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">8</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN8" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN8" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB8" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
                                     </tr>
                                     <tr style="line-height: 1.5;"> 
                                         <th scope="row">9</th> 
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="DNN9" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="CNN9" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
-                                        <td style="width: 188px; vertical-align: middle;">
+                                        <td id="GB9" style="width: 188px; vertical-align: middle;">
                                             <div class="progress position-relative">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%; background: green;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"> 45% </small>
+                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <small class="justify-content-center d-flex position-absolute w-100 text-body mt-1" style="font-size: 12px; line-height: 0.8;"></small>
                                                 <p></p>
                                             </div>                                             
                                         </td>                                         
@@ -351,6 +343,7 @@
         <script src="static/bootstrap.bundle.min.js"></script>
         <script src="static/draw.js"></script>
         <script src="static/ajax.js"></script>
+        <script src="static/init.js"></script>
         <!-- Menu Toggle Script -->
         <script>
     $("#menu-toggle").click(function(e) {

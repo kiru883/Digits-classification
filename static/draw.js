@@ -3,6 +3,7 @@ var font_size = 26;
 var canvas,ctx;
 var trigger = false;
 var timer;
+var time_for_painting = 1200;
 
 // Variables to keep track of the mouse position and left-button status
 var mouseX,mouseY,mouseDown=0;
@@ -21,7 +22,7 @@ function drawLine(ctx,x,y,size) {
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
-    lastY=y;
+        lastY=y;
     }
 
     //need for ajax
@@ -29,7 +30,7 @@ function drawLine(ctx,x,y,size) {
         window.clearTimeout(timer);
     }
     trigger = true;
-    timer = window.setTimeout(saveImg, 2200);
+    timer = window.setTimeout(saveImg, time_for_painting);
 
     // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
     r=0; g=0; b=0; a=255;
@@ -40,7 +41,6 @@ function drawLine(ctx,x,y,size) {
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
     //ctx.lineJoin = "round";
-
 
     // Draw a filled line
     ctx.beginPath();
@@ -60,11 +60,6 @@ ctx.closePath();
 // Update the last position to reference the current position
 lastX=x;
 lastY=y;
-}
-
-// Clear the canvas context using the canvas width and height
-function clearCanvas(canvas,ctx) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 // Keep track of the mouse button being pressed and draw a dot at current location
@@ -130,6 +125,7 @@ function sketchpad_touchEnd() {
 function sketchpad_touchMove(e) {
     // Update the touch co-ordinates
     getTouchPos(e);
+
     // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
     drawLine(ctx,touchX,touchY,font_size);
 

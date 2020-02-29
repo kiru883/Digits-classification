@@ -1,8 +1,5 @@
-from flask import Flask, render_template, request, url_for, jsonify, Response
+from flask import Flask, render_template, request, jsonify
 from pipeline.pipeline import Model
-import json
-
-import time
 
 
 app = Flask(__name__)
@@ -19,18 +16,22 @@ def get_image():
 
     if request.method == "POST":
         # get post req.
-        global visualisation_images
+        global images
+        global predicts
         image_base64 = request.values['imageBase64']
         image_base64 = image_base64.split(',')[1].encode('utf-8')
 
         # part 1, image preprocessing
-        visualisation_images = model.image_preprocessing(image_base64)
+        images = model.image_preprocessing(image_base64)
 
         # part 2, predict
-        print(model.predict())
+        predicts = model.predict()
+
+        # part 3, ansamble
 
     return jsonify({
-      "images": visualisation_images
+        "images": images,
+        "predicts": predicts
     })
 
 
