@@ -64,6 +64,7 @@ lastY=y;
 
 // Keep track of the mouse button being pressed and draw a dot at current location
 function sketchpad_mouseDown() {
+    document.getElementById("clearButton").disabled = true;
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,font_size);
 }

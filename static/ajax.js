@@ -22,6 +22,7 @@ function updatePage() {
     try{
         $.getJSON('/hook', function(data, status) {
             if (status == 'success'){
+                document.getElementById("clearButton").disabled = false;
                 place_images(data.images);
                 place_predicts(data.predicts);
                 window.clearInterval(refresher);

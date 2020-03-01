@@ -23,7 +23,6 @@ function clear_images(){
     document.getElementById("input").setAttribute('src', 'static/images/cap_background.png');
     document.getElementById("bounded").setAttribute('src', 'static/images/cap_background.png');
     document.getElementById("mnist").setAttribute('src', 'static/images/cap_background.png');
-
 }
 
 //clear all fields(predicts table, canvas, preprocessing images)
