@@ -7,16 +7,16 @@ import numpy
 import base64
 import matplotlib.pyplot as plt
 from FNN import FNN
-import keras
-import tensorflow as tf
+import sklearn
+import tensorflow
 import lightgbm
 
 
 global GRAPH
-GRAPH = tf.get_default_graph()
+GRAPH = tensorflow.get_default_graph()
 MODEL_FILE_EXTENSION = ".joblib"
 MODELS_PATH = "pipeline/models"
-img_sizes = {
+IMG_SIZES = {
     "input_img": (180, 170),
     "bounded_img": (120, 116),
     "mnist_img": (100, 90)
@@ -28,9 +28,13 @@ class Model:
         self.__dnn_model = load("pipeline/models/DNN.joblib")
         self.__cnn_model = load("pipeline/models/CNN.joblib")
         self.__gb_model = load("pipeline/models/GB.joblib")
+        self.__logreg_ensamble_model = load("pipeline/models/LogRegEnsamble.joblib")
 
         self.mnist_image = None
         self.predicts = None
+        self.cnn_pred = None
+        self.dnn_pred = None
+        self.gb_pred = None
         self.image_noise_coef = image_noise_coef
 
     # image preprocessor, return 3 image for site and 'mnist-array' image
@@ -82,21 +86,35 @@ class Model:
     def predict(self):
         # need for keras model, cnn predict
         with GRAPH.as_default():
-            cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))[0]
+            self.cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))[0]
         # dnn predict
-            dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0][0]
+            self.dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0][0]
         # gradient boosting predict
-            gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
+            self.gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
 
         # around arrays
-        cnn_pred = numpy.around(cnn_pred, 3)
-        dnn_pred = numpy.around(dnn_pred, 3)
-        gb_pred = numpy.around(gb_pred, 3)
+        cnn_pred = numpy.around(self.cnn_pred, 3)
+        dnn_pred = numpy.around(self.dnn_pred, 3)
+        gb_pred = numpy.around(self.gb_pred, 3)
 
         return {
             'DNN': dnn_pred.tolist(),
             'CNN': cnn_pred.tolist(),
             'GB': gb_pred.tolist()
+        }
+
+    # predict number by ensamble using predicts of each models
+    def ensamble_predict(self):
+        # create matrix with probabilities(each columns is each model predict)
+        numbers_probabilities = numpy.concatenate([self.dnn_pred.reshape(1, -1),
+                                                  self.cnn_pred.reshape(1, -1),
+                                                  self.gb_pred.reshape(1, -1)], axis=1)
+        # get predict
+        number_probabilities = self.__logreg_ensamble_model.predict_proba(numbers_probabilities).flatten()
+        number = numpy.argmax(number_probabilities)
+        return {
+            'number': int(number),
+            'probability': number_probabilities[number]
         }
 
     # prepare image for site
@@ -110,7 +128,7 @@ class Model:
             image = Image.open(buf)
 
         # get images background and image sizes
-        width_b, height_b = img_sizes[img_type]
+        width_b, height_b = IMG_SIZES[img_type]
         width_i, height_i = image.size
 
         # find max and min background sizes

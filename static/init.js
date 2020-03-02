@@ -25,9 +25,17 @@ function clear_images(){
     document.getElementById("mnist").setAttribute('src', 'static/images/cap_background.png');
 }
 
+//clear output field
+function clear_output(){
+    document.getElementById("number").textContent = "";
+    document.getElementById("probability").textContent = "";
+}
+
 //clear all fields(predicts table, canvas, preprocessing images)
 function clearFields(){
+    window.clearInterval(refresher);
     clear_canvas();
-    clear_table();
     clear_images();
+    clear_table();
+    clear_output();
 }

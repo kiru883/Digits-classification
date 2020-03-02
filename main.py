@@ -13,11 +13,11 @@ def index():
 
 @app.route("/hook", methods=["POST", "GET"])
 def get_image():
-
     if request.method == "POST":
         # get post req.
         global images
         global predicts
+        global ensamble
         image_base64 = request.values['imageBase64']
         image_base64 = image_base64.split(',')[1].encode('utf-8')
 
@@ -28,10 +28,12 @@ def get_image():
         predicts = model.predict()
 
         # part 3, ansamble
+        ensamble = model.ensamble_predict()
 
     return jsonify({
         "images": images,
-        "predicts": predicts
+        "predicts": predicts,
+        "ensamble": ensamble
     })
 
 

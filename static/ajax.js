@@ -1,43 +1,26 @@
 var refresher;
 var json;
-var inter = 0;
-var update_interval = 500;
 
 //send image into server
 function saveImg() {
 	var canvas = document.getElementById("sketchpad");
 	var dataURL = canvas.toDataURL('image/jpg');
-	refresher = window.setInterval(updatePage, update_interval);
+	//refresher = window.setInterval(updatePage, update_interval);
 	$.ajax({
 	  type: "POST",
 	  url: "/hook",
 	  data:{
 		imageBase64: dataURL
-		}
+		},
+	  success: function success(data){
+	    document.getElementById("clearButton").disabled = false;
+        place_images(data.images);
+        place_predicts(data.predicts);
+        place_number(data.ensamble);
+	  }
 	});
 }
 
-//dynamic. get image from server before preprocessing
-function updatePage() {
-    try{
-        $.getJSON('/hook', function(data, status) {
-            if (status == 'success'){
-                document.getElementById("clearButton").disabled = false;
-                place_images(data.images);
-                place_predicts(data.predicts);
-                window.clearInterval(refresher);
-                inter = 0;
-            }
-        }).fail(function (){
-            inter = inter + 1;
-            if (inter > 5){
-                window.clearInterval(refresher);
-                console.log("Time out.");
-            }
-        });
-    }
-    catch {}
-}
 
 //place images
 function place_images(data_images){
@@ -79,7 +62,12 @@ function place_predicts(data_predicts){
     }
 }
 
-
+function place_number(data_ensamble){
+    //number
+    document.getElementById("number").textContent = data_ensamble.number;
+    //probability
+    document.getElementById("probability").textContent = parseInt(data_ensamble.probability*10000)/100 + "%";
+}
 
 
 
