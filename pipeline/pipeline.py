@@ -1,4 +1,4 @@
-from PIL import Image, ImageChops
+from PIL import Image
 from sklearn.preprocessing import MinMaxScaler
 from skimage.transform import resize
 from io import BytesIO
