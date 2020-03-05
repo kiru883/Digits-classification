@@ -24,11 +24,9 @@ IMG_SIZES = {
 
 class Model:
     def __init__(self, image_noise_coef):
-        print("asdasdsadsad")
         # load models is model path with model_file_extension
         self.__dnn_model = load("pipeline/models/DNN.joblib")
         self.__cnn_model = load("pipeline/models/CNN.joblib")
-        print("test")
         self.__gb_model = load("pipeline/models/GB.joblib")
         self.__logreg_ensamble_model = load("pipeline/models/LogRegEnsamble.joblib")
 
@@ -90,10 +88,10 @@ class Model:
         with GRAPH.as_default():
             self.cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))[0]
         # dnn predict
-            self.dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0][0]
+            self.dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
         # gradient boosting predict
             self.gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
-
+        print("test")
         # around arrays
         cnn_pred = numpy.around(self.cnn_pred, 3)
         dnn_pred = numpy.around(self.dnn_pred, 3)
