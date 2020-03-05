@@ -24,9 +24,11 @@ IMG_SIZES = {
 
 class Model:
     def __init__(self, image_noise_coef):
+        print("asdasdsadsad")
         # load models is model path with model_file_extension
         self.__dnn_model = load("pipeline/models/DNN.joblib")
         self.__cnn_model = load("pipeline/models/CNN.joblib")
+        print("test")
         self.__gb_model = load("pipeline/models/GB.joblib")
         self.__logreg_ensamble_model = load("pipeline/models/LogRegEnsamble.joblib")
 
