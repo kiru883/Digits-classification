@@ -128,6 +128,7 @@ class Model:
             plt.axis('off')
             plt.savefig(buf, bbox_inches='tight')
             image = Image.open(buf)
+            del buf
 
         # get images background and image sizes
         width_b, height_b = IMG_SIZES[img_type]
