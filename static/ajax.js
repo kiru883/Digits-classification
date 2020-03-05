@@ -3,6 +3,7 @@ var json;
 
 //send image into server
 function saveImg() {
+    document.getElementById("clearButton").disabled = true;
 	var canvas = document.getElementById("sketchpad");
 	var dataURL = canvas.toDataURL('image/jpg');
 	//refresher = window.setInterval(updatePage, update_interval);

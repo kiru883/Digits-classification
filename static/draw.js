@@ -1,9 +1,6 @@
 // Variables for referencing the canvas and 2dcanvas context
 var font_size = 26;
 var canvas,ctx;
-var trigger = false;
-var timer;
-var time_for_painting = 1200;
 
 // Variables to keep track of the mouse position and left-button status
 var mouseX,mouseY,mouseDown=0;
@@ -24,13 +21,6 @@ function drawLine(ctx,x,y,size) {
         lastX=x;
         lastY=y;
     }
-
-    //need for ajax
-    if (trigger){
-        window.clearTimeout(timer);
-    }
-    trigger = true;
-    timer = window.setTimeout(saveImg, time_for_painting);
 
     // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
     r=0; g=0; b=0; a=255;
@@ -64,13 +54,17 @@ lastY=y;
 
 // Keep track of the mouse button being pressed and draw a dot at current location
 function sketchpad_mouseDown() {
-    document.getElementById("clearButton").disabled = true;
+
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,font_size);
 }
 
 // Keep track of the mouse button being released
 function sketchpad_mouseUp() {
+    canvas = document.getElementById("sketchpad");
+    if (mouseDown == 1){
+        saveImg();
+    }
     mouseDown=0;
 
     // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
@@ -119,7 +113,7 @@ function sketchpad_touchEnd() {
     // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
     lastX=-1;
     lastY=-1;
-
+    sameImg();
 }
 
 // Draw something and prevent the default scrolling when touch movement is detected
@@ -134,10 +128,6 @@ function sketchpad_touchMove(e) {
     event.preventDefault();
 }
 
-// Get the touch position relative to the top-left of the canvas
-// When we get the raw values of pageX and pageY below, they take into account the scrolling on the page
-// but not the position relative to our target div. We'll adjust them using "target.offsetLeft" and
-// "target.offsetTop" to get the correct values in relation to the top left of the canvas.
 function getTouchPos(e) {
     if (!e)
         var e = event;
@@ -150,7 +140,6 @@ function getTouchPos(e) {
         }
     }
 }
-
 
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
@@ -166,7 +155,7 @@ function init() {
         // React to mouse events on the canvas, and mouseup on the entire document
         canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
         canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
-        window.addEventListener('mouseup', sketchpad_mouseUp, false);
+        canvas.addEventListener('mouseup', sketchpad_mouseUp, false);
 
         // React to touch events on the canvas
         canvas.addEventListener('touchstart', sketchpad_touchStart, false);
@@ -174,4 +163,5 @@ function init() {
         canvas.addEventListener('touchmove', sketchpad_touchMove, false);
     }
 }
+
 onload = init;

@@ -23,7 +23,6 @@ def get_image():
 
         # part 1, image preprocessing
         images = model.image_preprocessing(image_base64)
-
         # part 2, predict
         predicts = model.predict()
 

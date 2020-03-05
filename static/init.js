@@ -33,7 +33,6 @@ function clear_output(){
 
 //clear all fields(predicts table, canvas, preprocessing images)
 function clearFields(){
-    window.clearInterval(refresher);
     clear_canvas();
     clear_images();
     clear_table();

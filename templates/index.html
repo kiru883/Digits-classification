@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100px;">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +12,7 @@
         <link href="static/css/simple-sidebar.css" rel="stylesheet">
         <link href="static/css/draw.css" rel="stylesheet">
     </head>
-    <body>
+    <body style="height: 100%;">
         <div class="d-flex" id="wrapper">
             <!-- Sidebar -->
             <div class="bg-light border-right" id="sidebar-wrapper" style="width: 120px;">
@@ -57,7 +57,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div style="height: 1000px; text-align: center;">
+                <div style="text-align: center;">
                     <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa;">
                         <canvas id="sketchpad" height="360px" width="400px" style="top: 60px; left: 815px; position: relative; z-index: 10; background: white;">
 </canvas>
@@ -74,9 +74,9 @@
                             <button id="clearButton" type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearFields()">Clear</button>
                         </div>
                         <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; bottom: 100px;">
-                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;"></label>
+                            <label style="position: absolute; top: 60px; left: 200px; font-size: 50px;">6</label>
                             <label style="position: absolute; top: 20px; font-size: 20px; align-self: stretch; left: 120px;">On picture probably....</label>
-                            <label id="probability" style="position: absolute; bottom: 25px; font-size: 20px; left: 192px;"></label>
+                            <label style="position: absolute; bottom: 25px; font-size: 20px; left: 192px;">Label</label>
                         </div>
                         <div style="width: 650px; height: 575px; position: relative; left: 45px; background-image: url('static/images/background.png'); border-radius: 20px; bottom: 550px;">
                             <label style="font-size: 25px; line-height: 1; position: absolute; top: 5px; left: 275px;">Predicts</label>
@@ -332,6 +332,34 @@
                                     </tr>
                                 </tbody>                                 
                             </table>
+                        </div>
+                    </div>
+                    <div style="margin-top: 100px; box-shadow: 0 0 30px #bababa; display: inline-block; vertical-align: middle; width: 1500px; margin-bottom: 60px;">
+                        <div style="height: 800px; text-align: center;">
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 20px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">Architecture scheme</h1>
+                            <img src="static/images/arсhitecture_scheme.png" style="width: 900px; display: inline-flex;">
+                        </div>
+                        <div style="height: 1000px;">
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 20px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">1. Preprocessing</h1>
+                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;">1.1 Input Preprocessor</p>
+                            <p style="font-size: 20px; margin-left: 100px; text-align: left; margin-top: 15px; margin-right: 70px;">At the beginning, the message is coming from client side, as message presented in base64 format, it convert in image. It is assumed that the image has a digit so after converting being find bounded digit, this is a rectangle with cutted borders without the parts of digit.</p>
+                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;">1.2 Mnist Preprocessor</p>
+                            <p style="font-size: 20px; margin-left: 100px; text-align: left; margin-top: 15px; margin-right: 70px;">After then as image has been resized, need transform it in mnist-like image, before the continue we need understand what is mnist image and how it organized?</p>
+                            <img src="static/images/mnist_ilustrator.png">
+                            <p style="font-size: 20px; text-align: left; margin-left: 100px; margin-top: 15px; margin-right: 70px;">As seen on illustrator, rectangle with digit takes place in middle,  supposed need resize and place bounded digit in the middle of the canvas with size 28 by 28 pixels , this is happening with bounded digit, thus the biggest side equated to 20 pixels and resized proportionaly for plasing in canvas. Second step consists in noise reduction, in cleaning excess gradation of grey and gain gradations of grey in the remaining pixels of digit.</p>
+                            <img src="static/images/noise_reduction_ilustrator.png">
+                            <p style="font-size: 20px; text-align: left; margin-left: 100px; margin-top: 15px; margin-right: 70px;">Note, noise reducing produced with math present image, as matrix, each element it is number by 0 to 255 and this is gradation of gray, noise reducing operation is simple difference between each pixel of image and &quot;noise coeficient&quot;. Last step consists in normalize matrix, this is done for avoid problems with gradient in neural networks</p>
+                        </div>
+                        <div style="height: 1650px;">
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 40px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">2. Predict</h1>
+                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;">2.1 Dense neural network</p>
+                            <p style="margin-top: 15px; margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left;">Title of dense neural networks says for itself, this is type of neural networks, neurons for this network connect with all previous and follow neurons, but this type of neurons network is &quot;hard&quot; in compute terms, and it suffer a lot on afflictions related a gradient(explosive and dying gradient). In end of theory in part &quot;other&quot; im will open neurons networks(DNN and CNN), trying understand what/how this math-nature creatures sees :). Dnn created from scratch, only numpy, only hardcore:) code with dnn model for classification is located on this link, it is study project. Hyperparameters for this model selected using hyperopt, little logics when choosing, becouse hyperparameters choising automaticly on in advance on initialized range.</p>
+                            <img src="static/images/dnn_architecture.png">
+                            <p style="text-align: left; margin-left: 100px; margin-right: 70px;">* Softplus
+activation function and Kullback loss function, sums in neurons using bias.</p>
+                            <p style="margin-top: 15px; margin-left: 100px; margin-right: 70px; text-align: left; font-size: 20px;">Also should note technical and quality importance softmax layer, on one side it improve quality, other it support using many other activations functions, outputs which not always can present as probability, softmax allows transform non-probability activations in probability distributions. Let&apos;s see on accuracy/epochs plot</p>
+                            <img src="static/images/dnn_accepochs_plot.png" style="width: 700px;">
+                            <p style="margin-left: 100px; margin-right: 70px; text-align: left; font-size: 20px; margin-top: 10px;">As see on graphics, dnn anyway slow overfitting, optimal number of epochs is 5</p>
                         </div>
                     </div>
                 </div>
