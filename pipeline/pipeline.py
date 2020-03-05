@@ -1,6 +1,5 @@
 from PIL import Image
 from sklearn.preprocessing import MinMaxScaler
-from skimage.transform import resize
 from io import BytesIO
 from joblib import load
 import numpy
@@ -10,6 +9,7 @@ from FNN import FNN
 import sklearn
 import tensorflow
 import lightgbm
+import scipy.misc
 
 
 global GRAPH
@@ -60,7 +60,7 @@ class Model:
         else:
             widthlen = int((widthlen * 20) / heightlen)
             heightlen = 20
-        number = resize(number, (heightlen, widthlen))
+        number = scipy.misc.imresize(number, (heightlen, widthlen))
 
         # get mnist image
         number = numpy.around(MinMaxScaler().fit_transform(number) * 255).astype(int)
