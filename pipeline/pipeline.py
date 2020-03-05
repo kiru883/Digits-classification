@@ -75,7 +75,7 @@ class Model:
         bounded64 = self.__site_images_prepare(image.crop(bbox), "bounded_img")
         mnist64 = self.__site_images_prepare(self.mnist_image, "mnist_img")
 
-        del image, number, half_x, half_y, widthlen, heightlen
+        del image, number, half_x, half_y, widthlen, heightlen, bbox
         return {
             "input_image": image64,
             "bounded_digit": bounded64,
@@ -91,7 +91,7 @@ class Model:
             self.dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
         # gradient boosting predict
             self.gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
-        print("test")
+
         # around arrays
         cnn_pred = numpy.around(self.cnn_pred, 3)
         dnn_pred = numpy.around(self.dnn_pred, 3)
@@ -112,6 +112,8 @@ class Model:
         # get predict
         number_probabilities = self.__logreg_ensamble_model.predict_proba(numbers_probabilities).flatten()
         number = numpy.argmax(number_probabilities)
+
+        del numbers_probabilities
         return {
             'number': int(number),
             'probability': number_probabilities[number]

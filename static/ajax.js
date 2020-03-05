@@ -1,6 +1,3 @@
-var refresher;
-var json;
-
 //send image into server
 function saveImg() {
     document.getElementById("clearButton").disabled = true;
