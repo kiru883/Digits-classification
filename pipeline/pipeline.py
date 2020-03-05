@@ -4,12 +4,16 @@ from io import BytesIO
 from joblib import load
 import numpy
 import base64
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from FNN import FNN
 import sklearn
 import tensorflow
 import lightgbm
 import scipy.misc
+
+
 
 
 global GRAPH

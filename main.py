@@ -4,7 +4,6 @@ import os
 
 
 app = Flask(__name__)
-model = Model(image_noise_coef=15)
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -24,6 +23,7 @@ def get_image():
 
         # part 1, image preprocessing
         images = model.image_preprocessing(image_base64)
+
         # part 2, predict
         predicts = model.predict()
 
@@ -38,6 +38,7 @@ def get_image():
 
 
 if __name__ == '__main__':
+    model = Model(image_noise_coef=15)
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=False)
 
