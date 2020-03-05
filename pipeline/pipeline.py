@@ -7,13 +7,12 @@ import base64
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import keras
 from FNN import FNN
 import sklearn
 import tensorflow
 import lightgbm
 import scipy.misc
-
-
 
 
 global GRAPH
@@ -92,9 +91,9 @@ class Model:
         with GRAPH.as_default():
             self.cnn_pred = self.__cnn_model.predict_proba(self.mnist_image.reshape(-1, 28, 28, 1))[0]
         # dnn predict
-            self.dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
+        self.dnn_pred = self.__dnn_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
         # gradient boosting predict
-            self.gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
+        self.gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
 
         # around arrays
         cnn_pred = numpy.around(self.cnn_pred, 3)

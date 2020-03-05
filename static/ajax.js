@@ -11,10 +11,12 @@ function saveImg() {
 		imageBase64: dataURL
 		},
 	  success: function success(data){
-	    document.getElementById("clearButton").disabled = false;
-        place_images(data.images);
-        place_predicts(data.predicts);
-        place_number(data.ensamble);
+	    if (data.success_compute){
+	        document.getElementById("clearButton").disabled = false;
+            place_images(data.images);
+            place_predicts(data.predicts);
+            place_number(data.ensamble);
+	    }
 	  }
 	});
 }
