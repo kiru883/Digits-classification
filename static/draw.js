@@ -100,6 +100,7 @@ function getMousePos(e) {
 
 // Draw something when a touch start is detected
 function sketchpad_touchStart() {
+    document.getElementById("number").textContext = "111";
     // Update the touch co-ordinates
     getTouchPos();
 

@@ -21,7 +21,6 @@ function saveImg() {
 	});
 }
 
-
 //place images
 function place_images(data_images){
     //input image
