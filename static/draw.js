@@ -61,6 +61,7 @@ function sketchpad_mouseDown() {
 
 // Keep track of the mouse button being released
 function sketchpad_mouseUp() {
+    document.getElementById("number").textContent = 'asd';
     canvas = document.getElementById("sketchpad");
     if (mouseDown == 1){
         saveImg();
@@ -100,6 +101,7 @@ function getMousePos(e) {
 
 // Draw something when a touch start is detected
 function sketchpad_touchStart() {
+
     document.getElementById("number").textContext = "111";
     // Update the touch co-ordinates
     getTouchPos();
