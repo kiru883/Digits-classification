@@ -2,21 +2,18 @@ from PIL import Image
 from sklearn.preprocessing import MinMaxScaler
 from io import BytesIO
 from joblib import load
+import scipy.misc
 import numpy
 import base64
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import keras
+# load model realizations
 from FNN import FNN
 import sklearn
-import tensorflow
 import lightgbm
-import scipy.misc
+import tensorflow
 
 
-global GRAPH
-GRAPH = tensorflow.get_default_graph()
+GRAPH = tensorflow.compat.v1.get_default_graph()
 MODEL_FILE_EXTENSION = ".joblib"
 MODELS_PATH = "pipeline/models"
 IMG_SIZES = {
@@ -24,6 +21,7 @@ IMG_SIZES = {
     "bounded_img": (120, 116),
     "mnist_img": (100, 90)
 }
+
 
 class Model:
     def __init__(self, image_noise_coef):
@@ -96,22 +94,22 @@ class Model:
         self.gb_pred = self.__gb_model.predict_proba(self.mnist_image.reshape(1, -1))[0]
 
         # around arrays
-        cnn_pred = numpy.around(self.cnn_pred, 3)
-        dnn_pred = numpy.around(self.dnn_pred, 3)
-        gb_pred = numpy.around(self.gb_pred, 3)
+        self.cnn_pred = numpy.around(self.cnn_pred, 3).reshape(1, -1)
+        self.dnn_pred = numpy.around(self.dnn_pred, 3).reshape(1, -1)
+        self.gb_pred = numpy.around(self.gb_pred, 3).reshape(1, -1)
 
         return {
-            'DNN': dnn_pred.tolist(),
-            'CNN': cnn_pred.tolist(),
-            'GB': gb_pred.tolist()
+            'DNN': self.dnn_pred.flatten().tolist(),
+            'CNN': self.cnn_pred.flatten().tolist(),
+            'GB': self.gb_pred.flatten().tolist()
         }
 
     # predict number by ensamble using predicts of each models
     def ensamble_predict(self):
         # create matrix with probabilities(each columns is each model predict)
-        numbers_probabilities = numpy.concatenate([self.dnn_pred.reshape(1, -1),
-                                                  self.cnn_pred.reshape(1, -1),
-                                                  self.gb_pred.reshape(1, -1)], axis=1)
+        numbers_probabilities = numpy.concatenate([self.dnn_pred,
+                                                  self.cnn_pred,
+                                                  self.gb_pred], axis=1)
         # get predict
         number_probabilities = self.__logreg_ensamble_model.predict_proba(numbers_probabilities).flatten()
         number = numpy.argmax(number_probabilities)
@@ -156,16 +154,7 @@ class Model:
         # write image in buffer(base64)
         buffer = BytesIO()
         site_image.save(buffer, format="PNG")
-
         img = base64.b64encode(buffer.getvalue()).decode('ascii')
 
         del image, site_image, max_b, min_b, width_i, width_b, height_i, height_b, buffer
         return img
-
-
-
-
-
-
-
-

@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 from pipeline.pipeline import Model
 import os
+import gc
 
 
 app = Flask(__name__)
 model = None
+images = None
+predicts = None
+ensamble = None
+
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -16,9 +21,6 @@ def get_image():
     success_compute = False
     if request.method == "POST":
         # get post req.
-        global images
-        global predicts
-        global ensamble
         image_base64 = request.values['imageBase64']
         image_base64 = image_base64.split(',')[1].encode('utf-8')
 
@@ -32,6 +34,8 @@ def get_image():
         ensamble = model.ensamble_predict()
 
         success_compute = True
+        del image_base64
+        gc.collect()
 
     return jsonify({
         "images": images,
@@ -39,6 +43,7 @@ def get_image():
         "ensamble": ensamble,
         "success_compute": success_compute
     })
+
 
 def load_model():
     global model

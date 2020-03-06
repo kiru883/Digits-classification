@@ -111,9 +111,11 @@ function sketchpad_touchStart() {
 
 function sketchpad_touchEnd() {
     // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
+    document.getElementById("number").textContext = "666";
+    sameImg();
+    //document.getElementById("number").textContext = "666";
     lastX=-1;
     lastY=-1;
-    sameImg();
 }
 
 // Draw something and prevent the default scrolling when touch movement is detected

@@ -5,18 +5,18 @@ function saveImg() {
 	var dataURL = canvas.toDataURL('image/jpg');
 	//refresher = window.setInterval(updatePage, update_interval);
 	$.ajax({
-	  type: "POST",
-	  url: "/hook",
-	  data:{
-		imageBase64: dataURL
-		},
-	  success: function success(data){
-	    if (data.success_compute){
-	        document.getElementById("clearButton").disabled = false;
-            place_images(data.images);
-            place_predicts(data.predicts);
-            place_number(data.ensamble);
-	    }
+	    type: "POST",
+	    url: "/hook",
+	    data:{
+	        imageBase64: dataURL
+		    },
+	    success: function success(data){
+	        if (data.success_compute){
+	            document.getElementById("clearButton").disabled = false;
+                place_images(data.images);
+                place_predicts(data.predicts);
+                place_number(data.ensamble);
+	        }
 	  }
 	});
 }
