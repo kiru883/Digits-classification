@@ -11,7 +11,6 @@
         <link href="static/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="static/css/simple-sidebar.css" rel="stylesheet">
-        <link href="static/css/draw.css" rel="stylesheet">
     </head>
     <body style="height: 100%;">
         <div class="d-flex" id="wrapper">
@@ -34,6 +33,8 @@
             </div>
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
+                <body onload="init()">
+
             <div id="page-content-wrapper">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" style="margin-bottom: 10px;">
                     <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
@@ -60,8 +61,6 @@
                 </nav>
                 <div style="text-align: center;">
                     <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa;">
-                        <canvas id="sketchpad" height="360px" width="400px" style="top: 60px; left: 815px; position: relative; z-index: 10; background: white;">
-</canvas>
                         <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png'); text-align: center; left: 45px; top: 50px;">
                             <img id="mnist" src="static/images/cap_background.png" style="width: 100px; position: absolute; right: 485px; top: 95px; height: 90px; background: white;">
                             <label style="position: absolute; right: 505px; bottom: 50px; width: 80px; background: white; font-size: 12px;">Output img.</label>
@@ -72,10 +71,11 @@
                             <label style="position: absolute; bottom: 5px; right: 90px; background: white; width: 155px;">Input img.</label>
                         </div>
                         <div style="width: 440px; height: 450px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; top: -210px;">
+                            <canvas id="sketchpad" style="border:2px solid #888; border-radius:4px; position:relative; top: 15px; background-color: white;" width="400px" height="360px"></canvas>
                             <button id="clearButton" type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearFields()">Clear</button>
                         </div>
                         <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; bottom: 100px;">
-                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;">6</label>
+                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;">jija</label>
                             <label id="probability" style="position: absolute; top: 20px; font-size: 20px; align-self: stretch; left: 120px;">On picture probably....</label>
                             <label style="position: absolute; bottom: 25px; font-size: 20px; left: 192px;">Label</label>
                         </div>

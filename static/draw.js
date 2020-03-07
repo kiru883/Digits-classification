@@ -21,7 +21,7 @@ function drawLine(ctx,x,y,size) {
         lastX=x;
         lastY=y;
     }
-
+    //console.log(lastX);
     // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
     r=0; g=0; b=0; a=255;
 
@@ -30,39 +30,36 @@ function drawLine(ctx,x,y,size) {
 
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
-    //ctx.lineJoin = "round";
+    ctx.lineJoin = "round";
 
     // Draw a filled line
     ctx.beginPath();
 
-// First, move to the old (previous) position
-ctx.moveTo(lastX,lastY);
+    // First, move to the old (previous) position
+    ctx.moveTo(lastX,lastY);
 
-// Now draw a line to the current touch/pointer position
-ctx.lineTo(x,y);
+    // Now draw a line to the current touch/pointer position
+    ctx.lineTo(x,y);
 
     // Set the line thickness and draw the line
-ctx.lineWidth = size;
-ctx.stroke();
+    ctx.lineWidth = size;
+    ctx.stroke();
 
-ctx.closePath();
+    ctx.closePath();
 
-// Update the last position to reference the current position
-lastX=x;
-lastY=y;
+    // Update the last position to reference the current position
+    lastX=x;
+    lastY=y;
 }
 
 // Keep track of the mouse button being pressed and draw a dot at current location
 function sketchpad_mouseDown() {
-
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,font_size);
 }
 
 // Keep track of the mouse button being released
 function sketchpad_mouseUp() {
-    document.getElementById("number").textContent = 'asd';
-    canvas = document.getElementById("sketchpad");
     if (mouseDown == 1){
         saveImg();
     }
@@ -101,8 +98,6 @@ function getMousePos(e) {
 
 // Draw something when a touch start is detected
 function sketchpad_touchStart() {
-
-    document.getElementById("number").textContext = "111";
     // Update the touch co-ordinates
     getTouchPos();
 
@@ -114,9 +109,7 @@ function sketchpad_touchStart() {
 
 function sketchpad_touchEnd() {
     // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
-    document.getElementById("number").textContext = "666";
-    sameImg();
-    //document.getElementById("number").textContext = "666";
+    saveImg();
     lastX=-1;
     lastY=-1;
 }
@@ -139,9 +132,10 @@ function getTouchPos(e) {
 
     if(e.touches) {
         if (e.touches.length == 1) { // Only deal with one finger
+            var r = canvas.getBoundingClientRect();
             var touch = e.touches[0]; // Get the information for finger #1
-            touchX=touch.pageX-touch.target.offsetLeft;
-            touchY=touch.pageY-touch.target.offsetTop;
+            touchX=touch.pageX - r.left;
+            touchY=touch.pageY - r.top;
         }
     }
 }

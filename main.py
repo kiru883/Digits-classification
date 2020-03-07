@@ -49,6 +49,7 @@ def load_model():
     global model
     model = Model(image_noise_coef=15)
 
+
 if __name__ == '__main__':
     load_model()
     port = int(os.environ.get("PORT", 5000))
