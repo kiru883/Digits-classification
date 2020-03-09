@@ -4,6 +4,7 @@ import os
 import gc
 
 
+NOISE_COEF = 32
 app = Flask(__name__)
 model = None
 images = None
@@ -47,7 +48,7 @@ def get_image():
 
 def load_model():
     global model
-    model = Model(image_noise_coef=15)
+    model = Model(image_noise_coef=NOISE_COEF)
 
 
 if __name__ == '__main__':
