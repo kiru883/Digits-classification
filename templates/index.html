@@ -14,48 +14,29 @@
     </head>
     <body style="height: 100%;">
         <div class="d-flex" id="wrapper">
-            <!-- Sidebar -->
-            <div class="bg-light border-right" id="sidebar-wrapper" style="width: 120px;">
-                <div class="list-group list-group-flush" style="width: 119px;">
-                    <a href="#" class="list-group-item list-group-item-action bg-light" style="white-space: pre; font-size: 15px;">Preprocessing</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Predict</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Ensamble</a>
-                    <a href="#" class="list-group-item list-group-item-action bg-light">Other</a>
-                </div>
-                <div class="dropdown"> 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
-                        <a class="dropdown-item" href="#">Action</a> 
-                        <a class="dropdown-item" href="#">Another action</a> 
-                        <a class="dropdown-item" href="#">Something else here</a> 
-                    </div>                     
+            <div style="width: 220px; position: sticky;">
+                <div style="width: 180px; position: fixed;">
+                    <ul class="list-group" style="overflow: hidden; display: table;"> 
+                        <li class="list-group-item" style="background: #f8f8f8; text-align: left; font-size: 15px; padding-left: 10px;">1. Preprocessing</li>                         
+                        <li class="list-group-item" style="vertical-align: middle; font-size: 13px; height: 45px; display: block; padding-right: 10px; text-align: right; padding-left: 0px;">1.1 Input preprocessor</li>                         
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">1.2 Mnist preprocessor</li>
+                        <li class="list-group-item" style="background: #f8f8f8; font-size: 15px; padding-left: 10px;">2. Predicts</li>
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: sub; text-align: right;">2.0 Data augmentation</li>                         
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">2.1 Dense neural network</li>
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px; padding-top: 2px;">2.2 Convultional neural network</li>
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">2.3 Gradient boosting</li>
+                        <li class="list-group-item" style="background: #f8f8f8; font-size: 15px; padding-left: 10px;">3. Ensemble</li>
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px;">3.1 Method select</li>
+                        <li class="list-group-item" style="background: #f8f8f8; font-size: 15px; text-align: center;">Other</li>
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">Jupyter notebook</li>
+                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px;">Useful links</li>                         
+                    </ul>
                 </div>
             </div>
+            <!-- Sidebar -->
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
             <div id="page-content-wrapper">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" style="margin-bottom: 10px;">
-                    <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-</li>
-                            <li class="nav-item dropdown">
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
                 <div style="text-align: center;">
                     <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa;">
                         <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png'); text-align: center; left: 45px; top: 50px;">
@@ -388,16 +369,23 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
                             <img src="static/images/gb_accepochs.png" style="width: 55%;">
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px;">Best number of trees(estimators) - 550</p>
                         </div>
-                        <div style="height: 1000px;">
-                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">3. Ensamble</h1>
+                        <div style="height: 850px;">
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">3. Ensemble</h1>
                             <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">3.1 Method select</p>
-                            <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Best number of trees(estimators) - 550</p>
+                            <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Ensemble this is method at which for predict used several models, in classification was used 2 main methods: bagging and stacking. Bagging this is method which concatenate predicts of the several models for averaging, weighted averaging and etc. Stacking used predicts of many models as train data for metamodel.</p>
                             <img src="static/images/ensamble.png" style="width: 65%;">
+                            <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Best score showed logistic regression model, tree model is overfitting(high train score, low test score), hyperparameters for logistic regression not searched.</p>
                         </div>
-                        <div style="height: 500px;">
+                        <div style="height: 360px;">
                             <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">Other</h1>
                             <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">Jupyter notebook</p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">1. EDA, models and etc -&nbsp;<a href="https://mlcourse.ai/articles/topic10-boosting/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://mlcourse.ai/articles/topic10-boosting</a></p>
                             <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">Useful links</p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">1. Gradient boosting -&nbsp;<a href="https://mlcourse.ai/articles/topic10-boosting/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://mlcourse.ai/articles/topic10-boosting</a></p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">2. Convultional neural networks -&nbsp;<a href="https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2</a></p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">3. Article for motivation -&nbsp;<a href="https://habr.com/ru/company/ods/blog/335998/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://habr.com/ru/company/ods/blog/335998</a></p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">4. Hyperopt -&nbsp;<a href="https://github.com/hyperopt/hyperopt" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://github.com/hyperopt/hyperopt</a></p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">5.&nbsp;Tool for good schemes -&nbsp;<a href="https://www.draw.io/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://www.draw.io</a></p>
                         </div>
                     </div>
                 </div>
@@ -412,12 +400,6 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
         <script src="static/ajax.js"></script>
         <script src="static/init.js"></script>
         <!-- Menu Toggle Script -->
-        <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
     </body>
 </html>
 <!-- <div style="position: relative"> <canvas id='the_stage' style="position: relative; background: white; top:25px; align: center" width="400" height="360"></canvas> </div>> -->
