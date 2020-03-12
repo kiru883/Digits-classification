@@ -112,12 +112,12 @@ class Model:
                                                   self.gb_pred], axis=1)
         # get predict
         number_probabilities = self.__logreg_ensamble_model.predict_proba(numbers_probabilities).flatten()
-        number = numpy.argmax(number_probabilities)
+        numbers = numpy.argsort(number_probabilities)
 
         del numbers_probabilities
         return {
-            'number': int(number),
-            'probability': number_probabilities[number]
+            'number': int(numbers[-1]),
+            'looklike': int(numbers[-2])
         }
 
     # prepare image for site

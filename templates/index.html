@@ -14,22 +14,23 @@
     </head>
     <body style="height: 100%;">
         <div class="d-flex" id="wrapper">
-            <div style="width: 220px; position: sticky;">
+            <div style="width: 220px; position: absolute;">
                 <div style="width: 180px; position: fixed;">
                     <ul class="list-group" style="overflow: hidden; display: table;"> 
-                        <li class="list-group-item" style="background: #f8f8f8; text-align: left; font-size: 15px; padding-left: 10px;">1. Preprocessing</li>                         
-                        <li class="list-group-item" style="vertical-align: middle; font-size: 13px; height: 45px; display: block; padding-right: 10px; text-align: right; padding-left: 0px;">1.1 Input preprocessor</li>                         
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">1.2 Mnist preprocessor</li>
-                        <li class="list-group-item" style="background: #f8f8f8; font-size: 15px; padding-left: 10px;">2. Predicts</li>
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: sub; text-align: right;">2.0 Data augmentation</li>                         
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">2.1 Dense neural network</li>
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px; padding-top: 2px;">2.2 Convultional neural network</li>
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">2.3 Gradient boosting</li>
-                        <li class="list-group-item" style="background: #f8f8f8; font-size: 15px; padding-left: 10px;">3. Ensemble</li>
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px;">3.1 Method select</li>
-                        <li class="list-group-item" style="background: #f8f8f8; font-size: 15px; text-align: center;">Other</li>
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right;">Jupyter notebook</li>
-                        <li class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px;">Useful links</li>                         
+                        <a href="#Preprocessor" target="_self" class="list-group-item" style="background: #f8f8f8; text-align: left; font-size: 15px; padding-left: 10px; color: inherit;">1. Preprocessing</a> 
+                        <a href="#InputPreprocessor" target="_self" class="list-group-item" style="vertical-align: middle; font-size: 13px; height: 45px; display: block; padding-right: 10px; text-align: right; padding-left: 0px; color: inherit;">1.1 Input preprocessor</a> 
+                        <a href="#MnistPreprocessor" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right; color: inherit;">1.2 Mnist preprocessor</a>
+                        <a href="#Predicts" target="_self" class="list-group-item" style="background: #f8f8f8; font-size: 15px; padding-left: 10px; color: inherit;">2. Predicts</a>
+                        <a href="#DataAugmentation" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: sub; text-align: right; color: inherit;">2.0 Data augmentation</a> 
+                        <a href="#DenseNeuralNetwork" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right; color: inherit;">2.1 Dense neural network</a>
+                        <a href="#ConvultionalNeuralNetwork" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px; padding-top: 2px; color: inherit;">2.2 Convultional neural network</a>
+                        <a href="#GradientBoosting" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right; color: inherit;">2.3 Gradient boosting</a>
+                        <a href="#Ensemble" target="_self" class="list-group-item" style="background: #f8f8f8; font-size: 15px; padding-left: 10px; color: inherit;">3. Ensemble</a>
+                        <a href="#MethodSelect" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px; color: inherit;">3.1 Method select</a>
+                        <a href="#Other" target="_self" class="list-group-item" style="background: #f8f8f8; font-size: 15px; text-align: center; color: inherit;">Other</a>
+                        <a href="#JupyterNotebook" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-left: 0px; padding-right: 10px; vertical-align: middle; text-align: right; color: inherit;">Jupyter notebook</a>
+                        <a href="#UsefulLinks" target="_self" class="list-group-item" style="font-size: 13px; height: 45px; padding-right: 10px; vertical-align: middle; text-align: right; padding-left: 0px; color: inherit;">Useful links</a>
+                        <a href="https://github.com/kiru883/Digits-classification" class="list-group-item" style="background: #f8f8f8; font-size: 15px; text-align: center; color: inherit;">Home</a> 
                     </ul>
                 </div>
             </div>
@@ -37,7 +38,7 @@
             <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
             <div id="page-content-wrapper">
-                <div style="text-align: center;">
+                <div style="text-align: center; margin-left: 180px;">
                     <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa;">
                         <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png'); text-align: center; left: 45px; top: 50px;">
                             <img id="mnist" src="static/images/cap_background.png" style="width: 100px; position: absolute; right: 485px; top: 95px; height: 90px; background: white;">
@@ -53,9 +54,9 @@
                             <button id="clearButton" type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearFields()">Clear</button>
                         </div>
                         <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; bottom: 100px;">
-                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;">jija</label>
-                            <label id="probability" style="position: absolute; top: 20px; font-size: 20px; align-self: stretch; left: 120px;">On picture probably....</label>
-                            <label style="position: absolute; bottom: 25px; font-size: 20px; left: 192px;">Label</label>
+                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;"></label>
+                            <label style="position: absolute; top: 20px; font-size: 20px; align-self: stretch; left: 120px;">On picture probably....</label>
+                            <label id="looklike"  style="position: absolute; bottom: 25px; font-size: 17px; left: 140px;"></label>
                         </div>
                         <div style="width: 650px; height: 575px; position: relative; left: 45px; background-image: url('static/images/background.png'); border-radius: 20px; bottom: 550px;">
                             <label style="font-size: 25px; line-height: 1; position: absolute; top: 5px; left: 275px;">Predicts</label>
@@ -319,10 +320,10 @@
                             <img src="static/images/arсhitecture_scheme.png" style="width: 900px; display: inline-flex;">
                         </div>
                         <div style="height: 1000px;">
-                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 20px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">1. Preprocessing</h1>
-                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;">1.1 Input Preprocessor</p>
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 20px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;"><a id="Preprocessor"></a>1. Preprocessing</h1>
+                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;"><a id="InputPreprocessor"></a>1.1 Input Preprocessor</p>
                             <p style="font-size: 20px; margin-left: 100px; text-align: left; margin-top: 15px; margin-right: 70px;">At the beginning, the message is coming from client side, as message presented in base64 format, it convert in image. It is assumed that the image has a digit so after converting being find bounded digit, this is a rectangle with cutted borders without the parts of digit.</p>
-                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;">1.2 Mnist Preprocessor</p>
+                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;"><a id="MnistPreprocessor"></a>1.2 Mnist Preprocessor</p>
                             <p style="font-size: 20px; margin-left: 100px; text-align: left; margin-top: 15px; margin-right: 70px;">After then as image has been resized, need transform it in mnist-like image, before the continue we need understand what is mnist image and how it organized?</p>
                             <img src="static/images/mnist_ilustrator.png">
                             <p style="font-size: 20px; text-align: left; margin-left: 100px; margin-top: 15px; margin-right: 70px;">As seen on illustrator, rectangle with digit takes place in middle,  supposed need resize and place bounded digit in the middle of the canvas with size 28 by 28 pixels , this is happening with bounded digit, thus the biggest side equated to 20 pixels and resized proportionaly for plasing in canvas. Second step consists in noise reduction, in cleaning excess gradation of grey and gain gradations of grey in the remaining pixels of digit.</p>
@@ -330,14 +331,14 @@
                             <p style="font-size: 20px; text-align: left; margin-left: 100px; margin-top: 15px; margin-right: 70px;">Note, noise reducing produced with math present image, as matrix, each element it is number by 0 to 255 and this is gradation of gray, noise reducing operation is simple difference between each pixel of image and &quot;noise coeficient&quot;. Last step consists in normalize matrix, this is done for avoid problems with gradient in neural networks</p>
                         </div>
                         <div style="height: 6605px;">
-                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 40px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">2. Predict</h1>
-                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">2.0 Data augmentation</p>
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 40px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;"><a id="Predicts"></a>2. Predict</h1>
+                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="DataAugmentation"></a>2.0 Data augmentation</p>
                             <p style="margin-top: 15px; margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left;">Mnist dataset have not really quality, some digits, namely bounded rectangles with digit, which should be located in area 20x20 pixels in 28x28 canvas, have biases, it&apos;s very undesirable for gradient boosting model and dense neural network, such dataset objects exacebate training.&nbsp;Mnist dataset undergo general preprocessing, namely:</p>
                             <p style="margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left; margin-top: -5px;">1. Extract bounded digit</p>
                             <p style="margin-top: -5px; margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left;">2. Rotate this bounded digit on 24 gradus on left and right</p>
                             <p style="margin-top: -5px; margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left;">3. Noise reducing and normalization</p>
                             <img src="static/images/data_augmentation_ilustrator.png">
-                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;">2.1 Dense neural network</p>
+                            <p style="font-size: 20px; text-align: left; text-indent: 108px; margin-top: 20px; margin-bottom: -10px; font-style: italic;"><a id="DenseNeuralNetwork"></a>2.1 Dense neural network</p>
                             <p style="margin-top: 15px; margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left;">Title of dense neural networks says for itself, this is type of neural networks, neurons for this network connect with all previous and follow neurons, but this type of neurons network is &quot;hard&quot; in compute terms, and it suffer a lot on afflictions related a gradient(explosive and dying gradient). Dnn created from scratch, only numpy, only hardcore:) code with dnn model for classification is located on this link, it is study project. Hyperparameters for this model selected using hyperopt, little logics when choosing, becouse hyperparameters choising automaticly on in advance on initialized range.</p>
                             <img src="static/images/dnn_architecture.png">
                             <p style="text-align: left; margin-left: 100px; margin-right: 70px;">* Softplus
@@ -345,7 +346,7 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
                             <p style="margin-top: 15px; margin-left: 100px; margin-right: 70px; text-align: left; font-size: 20px;">Also should note technical and quality importance softmax layer, on one side it improve quality, other it support using many other activations functions, outputs which not always can present as probability, softmax allows transform non-probability activations in probability distributions. Let&apos;s see on accuracy/epochs plot</p>
                             <img src="static/images/dnn_accepochs.png" style="width: 700px;">
                             <p style="margin-left: 100px; margin-right: 70px; text-align: left; font-size: 20px; margin-top: 10px;">As see on graphics, dnn anyway slow overfitting, optimal number of epochs is 5</p>
-                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">2.2 Convultional neural network</p>
+                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="ConvultionalNeuralNetwork"></a>2.2 Convultional neural network</p>
                             <p style="text-align: left; font-size: 20px; margin-top: 15px; margin-left: 100px; margin-right: 70px;">In the paragraph above, it was written that DNNs have many and many weights, for example: dnn working with an image size of 100x100 pixels has 10,000 inputs, each neuron on the next layer will cost 10,000 weights, this neural network takes a lot of time to learn, and It doesn&rsquo;t extract individual parts, but clubs.</p>
                             <p style="margin-top: 15px; margin-left: 100px; margin-right: 70px; text-align: left; font-size: 20px;">Cnn good with computer vision tasks and has a few weights. The main mechanism of this model is convulsive layers, namely the kernels(cores/filters). Cores allow you to extract objects, for example, circles (eight have 2) or curved lines of the number two. Classic cnn consists of a convolutional, unifying and fully connected (dense) layer.&nbsp; For create this network was used keras, the figure below shows the image architecture model used in the mnist classification.</p>
                             <img src="static/images/cnn_architecture.png">
@@ -360,7 +361,7 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
                             <p style="text-align: left; margin-left: 100px; margin-right: 70px; font-size: 20px;">Accuracy / Epochs plot:</p>
                             <img src="static/images/cnn_accepochs.png" style="width: 60%;">
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px;">Optimal number of epochs is 20</p>
-                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">2.3 Gradient boosting</p>
+                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="GradientBoosting"></a>2.3 Gradient boosting</p>
                             <p style="text-align: left; margin-left: 100px; margin-right: 70px; font-size: 20px; margin-top: 15px;">Boosting(in classification was used tree as basic learner) it&apos;s powerful algorithm, basic idea consist in stepwise minimize the loss function through adding new trees trained on errors the previous trees. Let&apos;s move on gradient boosting, namely on gradient, gradient it&apos;s value which when adding to function argument, maximize function and when decrease on argument minimize function. Each tree in gradient boosting machine(in classification was used lightgbm) produce gradient by which argument of the loss function decreases leading to minimization of loss function. more detailed interpretation located in at the end of the article. Finding the hypermapameters i divided them into two stages.</p>
                             <img src="static/images/gb_hyperparams.png">
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px;">Stage 1: Selecting a tree depth, best depth is 6, note, increasing this hyperparameter causes overfitting!</p>
@@ -370,17 +371,17 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px;">Best number of trees(estimators) - 550</p>
                         </div>
                         <div style="height: 850px;">
-                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">3. Ensemble</h1>
-                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">3.1 Method select</p>
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;"><a id="Ensemble"></a>3. Ensemble</h1>
+                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="MethodSelect"></a>3.1 Method select</p>
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Ensemble this is method at which for predict used several models, in classification was used 2 main methods: bagging and stacking. Bagging this is method which concatenate predicts of the several models for averaging, weighted averaging and etc. Stacking used predicts of many models as train data for metamodel.</p>
                             <img src="static/images/ensamble.png" style="width: 65%;">
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Best score showed logistic regression model, tree model is overfitting(high train score, low test score), hyperparameters for logistic regression not searched.</p>
                         </div>
                         <div style="height: 360px;">
-                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">Other</h1>
-                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">Jupyter notebook</p>
-                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">1. EDA, models and etc -&nbsp;<a href="https://mlcourse.ai/articles/topic10-boosting/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://mlcourse.ai/articles/topic10-boosting</a></p>
-                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;">Useful links</p>
+                            <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;"><a id="Other"></a>Other</h1>
+                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="JupyterNotebook"></a>Jupyter notebook</p>
+                            <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">1. EDA, models and etc -&nbsp;<a href="https://mlcourse.ai/articles/topic10-boosting/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://github.com/kiru883/Digits-classification/blob/master/Untitled0.ipynb</a></p>
+                            <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="UsefulLinks"></a>Useful links</p>
                             <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">1. Gradient boosting -&nbsp;<a href="https://mlcourse.ai/articles/topic10-boosting/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://mlcourse.ai/articles/topic10-boosting</a></p>
                             <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">2. Convultional neural networks -&nbsp;<a href="https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2</a></p>
                             <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">3. Article for motivation -&nbsp;<a href="https://habr.com/ru/company/ods/blog/335998/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://habr.com/ru/company/ods/blog/335998</a></p>

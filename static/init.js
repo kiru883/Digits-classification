@@ -28,7 +28,7 @@ function clear_images(){
 //clear output field
 function clear_output(){
     document.getElementById("number").textContent = "";
-    document.getElementById("probability").textContent = "";
+    document.getElementById("looklike").textContent = "";
 }
 
 //clear all fields(predicts table, canvas, preprocessing images)

@@ -64,8 +64,8 @@ function place_predicts(data_predicts){
 function place_number(data_ensamble){
     //number
     document.getElementById("number").textContent = data_ensamble.number;
-    //probability
-    document.getElementById("probability").textContent = parseInt(data_ensamble.probability*10000)/100 + "%";
+    //look like
+    document.getElementById("looklike").textContent = "It also looks like " + parseInt(data_ensamble.looklike);
 }
 
 
