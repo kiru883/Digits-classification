@@ -39,7 +39,7 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div style="text-align: center; margin-left: 180px;">
-                    <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa;">
+                    <div style="display: inline-block; vertical-align: middle; width: 1280px; height: 1000px; position: relative; box-shadow: 0 0 30px #bababa; zoom: 0.9;">
                         <div style="width: 650px; height: 260px; position: relative; background-clip: border-box; box-shadow: 13px; border-radius: 20px; background-image: url('static/images/background.png'); text-align: center; left: 45px; top: 50px;">
                             <img id="mnist" src="static/images/cap_background.png" style="width: 100px; position: absolute; right: 485px; top: 95px; height: 90px; background: white;">
                             <label style="position: absolute; right: 505px; bottom: 50px; width: 80px; background: white; font-size: 12px;">Output img.</label>
@@ -54,9 +54,9 @@
                             <button id="clearButton" type="button" class="btn btn-light" style="position: absolute; bottom: 15px; left: 130px; width: 180px; background: white;" onclick="clearFields()">Clear</button>
                         </div>
                         <div style="width: 440px; height: 200px; position: relative; background-color: #f8f8f8; border-radius: 20px; left: 795px; bottom: 100px;">
-                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;"></label>
-                            <label style="position: absolute; top: 20px; font-size: 20px; align-self: stretch; left: 120px;">On picture probably....</label>
-                            <label id="looklike"  style="position: absolute; bottom: 25px; font-size: 17px; left: 140px;"></label>
+                            <label id="number" style="position: absolute; top: 60px; left: 200px; font-size: 50px;">jija</label>
+                            <label id="probability" style="position: absolute; top: 20px; font-size: 20px; align-self: stretch; left: 120px;">On picture probably....</label>
+                            <label style="position: absolute; bottom: 25px; font-size: 20px; left: 192px;">Label</label>
                         </div>
                         <div style="width: 650px; height: 575px; position: relative; left: 45px; background-image: url('static/images/background.png'); border-radius: 20px; bottom: 550px;">
                             <label style="font-size: 25px; line-height: 1; position: absolute; top: 5px; left: 275px;">Predicts</label>
@@ -330,7 +330,7 @@
                             <img src="static/images/noise_reduction_ilustrator.png">
                             <p style="font-size: 20px; text-align: left; margin-left: 100px; margin-top: 15px; margin-right: 70px;">Note, noise reducing produced with math present image, as matrix, each element it is number by 0 to 255 and this is gradation of gray, noise reducing operation is simple difference between each pixel of image and &quot;noise coeficient&quot;. Last step consists in normalize matrix, this is done for avoid problems with gradient in neural networks</p>
                         </div>
-                        <div style="height: 6605px;">
+                        <div style="height: 6600px;">
                             <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 40px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;"><a id="Predicts"></a>2. Predict</h1>
                             <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="DataAugmentation"></a>2.0 Data augmentation</p>
                             <p style="margin-top: 15px; margin-left: 100px; padding-right: 70px; font-size: 20px; text-align: left;">Mnist dataset have not really quality, some digits, namely bounded rectangles with digit, which should be located in area 20x20 pixels in 28x28 canvas, have biases, it&apos;s very undesirable for gradient boosting model and dense neural network, such dataset objects exacebate training.&nbsp;Mnist dataset undergo general preprocessing, namely:</p>
