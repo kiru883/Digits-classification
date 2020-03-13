@@ -114,7 +114,7 @@ class Model:
         number_probabilities = self.__logreg_ensamble_model.predict_proba(numbers_probabilities).flatten()
         numbers = numpy.argsort(number_probabilities)
 
-        del numbers_probabilities, number_probabilities
+        del numbers_probabilities
         return {
             'number': int(numbers[-1]),
             'looklike': int(numbers[-2])
