@@ -1,5 +1,5 @@
 *LINK - https://simple-mnist-classification.herokuapp.com/
 
-Architecture scheme
-![Image alt](/static/images/arсhitecture_scheme.png)
+***Architecture scheme***
+![](/static/images/arсhitecture_scheme.png)
 
