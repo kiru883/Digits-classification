@@ -1,5 +1,5 @@
 <div align="center">
-* LINK - https://simple-mnist-classification.herokuapp.com/ *
+https://simple-mnist-classification.herokuapp.com/ 
 </div>
 
 <div style="margin-top: 100px; box-shadow: 0 0 30px #bababa; display: inline-block; vertical-align: middle; width: 1500px; margin-bottom: 60px;">
