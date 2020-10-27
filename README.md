@@ -1,3 +1,7 @@
+<div align="center">
+*LINK - https://simple-mnist-classification.herokuapp.com/
+</div>
+
 <div style="margin-top: 100px; box-shadow: 0 0 30px #bababa; display: inline-block; vertical-align: middle; width: 1500px; margin-bottom: 60px;">
                         <div style="height: 800px; text-align: center;">
                             <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 20px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;">Architecture scheme</h1>
@@ -73,20 +77,3 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
                             <p style="text-align: left; font-size: 16px; margin-left: 100px; margin-right: 70px; margin-top: -10px;">5.&nbsp;Tool for good schemes -&nbsp;<a href="https://www.draw.io/" style="text-align: center; background-color: rgb(255, 255, 255); font-size: 1rem;">https://www.draw.io</a></p>
                         </div>
                     </div>
-
-*LINK - https://simple-mnist-classification.herokuapp.com/
-
-<div align="center">
- 
-***Architecture scheme***
-
-</div>
-
- [![](/static/images/arсhitecture_scheme.png)]
-
-***1. Preprocessing***
-- 1.1 Input Preprocessing
- - At the beginning, the message is coming from client side, as message presented in base64 format, it convert in image. It is assumed that the image has a digit so after converting being find bounded digit, this is a rectangle with cutted borders without the parts of digit.
-- 1.2 Mnist Preprocessor
- - After then as image has been resized, need transform it in mnist-like image, before the continue we need understand what is mnist image and how it organized?
-  ![](/static/images/mnist_ilustrator.png) 
