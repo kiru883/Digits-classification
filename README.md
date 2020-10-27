@@ -1,7 +1,9 @@
 *LINK - https://simple-mnist-classification.herokuapp.com/
 
+<div align="center">
 ***Architecture scheme***
- ![](/static/images/arсhitecture_scheme.png)
+</div>
+ [![](/static/images/arсhitecture_scheme.png)]
 
 ***1. Preprocessing***
 - 1.1 Input Preprocessing
