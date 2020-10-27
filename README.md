@@ -61,7 +61,7 @@ activation function and Kullback loss function, sums in neurons using bias.</p>
                         <div style="height: 850px;">
                             <h1 style="font-size: 25px; text-align: left; text-indent: 50px; margin-top: 10px; border-bottom: 3px solid #bababa; margin-left: 50px; margin-right: 50px;"><a id="Ensemble"></a>3. Ensemble</h1>
                             <p style="margin-top: 20px; margin-bottom: -10px; text-indent: 108px; text-align: left; font-style: italic; font-size: 20px;"><a id="MethodSelect"></a>3.1 Method select</p>
-                            <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Ensemble this is method at which for predict used several models, in classification was used stacking method. Stacking used predicts of many models(metafeatures) as train data for metamodel.</p>
+                            <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Ensemble this is method at which for predict used several models, in classification was used stacking method. Stacking used predicts of many models(metafeatures) as train data for metamodel, im use a logistic regression.</p>
                             <img src="static/images/ensamble.png" style="width: 65%;">
                             <p style="text-align: left; font-size: 20px; margin-left: 100px; margin-right: 70px; margin-top: 15px;">Best score showed logistic regression model, tree model is overfitting(high train score, low test score), hyperparameters for logistic regression not searched.</p>
                         </div>
